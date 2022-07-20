@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="MagicTheme.Views.ShellPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:MagicTheme.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navihelpers="using:MagicTheme.Helpers.Navigation"
+    xmlns:views="using:MagicTheme.Views"
+    xmlns:vm="using:MagicTheme.ViewModels"
+    Loaded="Page_Loaded"
+    mc:Ignorable="d">
+
+    <Grid>
+        <NavigationView
+            Name="shellNavi"
+            IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
+            IsSettingsVisible="True"
+            IsTitleBarAutoPaddingEnabled="False"
+            ItemInvoked="shellNavi_ItemInvoked"
+            OpenPaneLength="288"
+            SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
+            <NavigationView.MenuItems>
+                <NavigationViewItem
+                    x:Uid="dashboard"
+                    navihelpers:NavigationHelper.NavigateTo="views:DashboardPage"
+                    Content="开始"
+                    IsSelected="True">
+                    <NavigationViewItem.Icon>
+                        <FontIcon
+                            FontFamily="Segoe Fluent Icons"
+                            FontSize="28"
+                            Glyph="&#xE7F8;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    x:Uid="action"
+                    navihelpers:NavigationHelper.NavigateTo="views:ActionPage"
+                    Content="行为">
+                    <NavigationViewItem.Icon>
+                        <FontIcon
+                            FontFamily="Segoe Fluent Icons"
+                            FontSize="28"
+                            Glyph="&#xE945;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Margin="8,10,0,0"
+                    Style="{StaticResource TitleTextBlockStyle}"
+                    Text="{x:Bind ViewModel.Header,Mode=TwoWay}" />
+
+                <Frame
+                    Name="shellFrame"
+                    Grid.Row="1"
+                    Margin="0,28,0,0" />
+            </Grid>
+
+        </NavigationView>
+    </Grid>
+</Page>

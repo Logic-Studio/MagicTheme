@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MagicTheme (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "MagicTheme (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
